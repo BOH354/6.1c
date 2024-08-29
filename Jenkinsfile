@@ -4,45 +4,73 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building...'
-                // Add your build steps here
+                script {
+                    echo 'Building the code...'
+                    echo 'Task: Compile the code.'
+                    echo 'Tool: Maven'
+                }
             }
         }
-        stage('Unit and Integration Test') {
+        stage('Unit and Integration Tests') {
             steps {
-                echo 'Running unit and integration tests...'
-                // Add your test steps here
+                script {
+                    echo 'Running unit and integration tests...'
+                    echo 'Task: Run unit tests to ensure the code works as expected.'
+                    echo 'Tool: JUnit for unit tests, TestNG for integration tests.'
+                }
             }
         }
         stage('Code Analysis') {
             steps {
-                echo 'Performing code analysis...'
-                // Add your code analysis steps here
+                script {
+                    echo 'Performing code analysis...'
+                    echo 'Task: Analyze the code to ensure it meets industry standards.'
+                    echo 'Tool: SonarQube'
+                }
             }
         }
         stage('Security Scan') {
             steps {
-                echo 'Performing security scan...'
-                // Add your security scan steps here
+                script {
+                    echo 'Performing security scan...'
+                    echo 'Task: Identify vulnerabilities in the code.'
+                    echo 'Tool: OWASP Dependency Check'
+                }
             }
         }
         stage('Deploy to Staging') {
             steps {
-                echo 'Deploying to staging environment...'
-                // Add your deployment steps here
+                script {
+                    echo 'Deploying to staging environment...'
+                    echo 'Task: Deploy the application to a staging server.'
+                    echo 'Tool: AWS CLI'
+                }
             }
         }
         stage('Integration Tests on Staging') {
             steps {
-                echo 'Running integration tests on staging...'
-                // Add your integration test steps here
+                script {
+                    echo 'Running integration tests on staging...'
+                    echo 'Task: Ensure the application functions as expected in the staging environment.'
+                    echo 'Tool: Selenium for UI testing, Postman for API testing'
+                }
             }
         }
         stage('Deploy to Production') {
             steps {
-                echo 'Deploying to production environment...'
-                // Add your production deployment steps here
+                script {
+                    echo 'Deploying to production...'
+                    echo 'Task: Deploy the application to a production server.'
+                    echo 'Tool: AWS CLI'
+                }
             }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline execution completed. Sending notification email...'
+            echo 'Tool: Jenkins Email Extension Plugin'
         }
     }
 }
