@@ -68,9 +68,10 @@ pipeline {
     }
 
     post {
-        always {
-            echo 'Pipeline execution completed. Sending notification email...'
-            echo 'Tool: Jenkins Email Extension Plugin'
-        }
+        success {
+            mail to: 'christophergualtieri@outlook.com',
+                subject: "Pipeline Success: ${currentBuild.fullDisplayName}",
+                body: "The pipeline completed successfully."
     }
+}
 }
